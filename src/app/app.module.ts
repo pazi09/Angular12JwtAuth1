@@ -14,6 +14,7 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import {authInterceptorProviders} from "./_/auth.interceptor";
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {authInterceptorProviders} from "./_/auth.interceptor";
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    UserlistComponent
+    UserlistComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
