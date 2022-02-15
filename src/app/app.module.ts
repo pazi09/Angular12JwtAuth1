@@ -16,6 +16,7 @@ import { UserlistComponent } from './userlist/userlist.component';
 import {authInterceptorProviders} from "./_/auth.interceptor";
 import { ChatComponent } from './chat/chat.component';
 import { MapComponent } from './map/map.component';
+import { UserinfoComponent } from './userinfo/userinfo.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MapComponent } from './map/map.component';
     BoardUserComponent,
     UserlistComponent,
     ChatComponent,
-    MapComponent
+    MapComponent,
+    UserinfoComponent
   ],
   imports: [
     BrowserModule,

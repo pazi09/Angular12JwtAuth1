@@ -11,6 +11,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import {UserlistComponent} from "./userlist/userlist.component";
 import {ChatComponent} from "./chat/chat.component";
 import {MapComponent} from "./map/map.component";
+import {UserinfoComponent} from "./userinfo/userinfo.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'users' , component:UserlistComponent},
   { path: 'chat' , component:ChatComponent},
   { path: 'map' , component:MapComponent},
+  { path: 'userinfo' , component:UserinfoComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 
 ];
