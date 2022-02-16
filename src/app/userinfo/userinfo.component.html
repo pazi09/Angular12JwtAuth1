@@ -1,72 +1,42 @@
-<div class="col-md-12">
-  <div class="card card-container">
-<form
-  *ngIf="!isLoggedIn"
-  name="form"
-  (ngSubmit)="f.form.valid && onSubmit()"
-  #f="ngForm"
-  novalidate
->
-<div class="form-group">
-  <label for="name">Name</label>
-  <input
-    type="text"
-    class="form-control"
-    name="name"
-    [(ngModel)]="form.name"
-    required
-    #name="ngModel"
-  />
-  <div
-    class="alert alert-danger"
-    role="alert"
-    *ngIf="name.errors && f.submitted"
-  >
-    Name is required!
-  </div>
-</div>
-<div class="form-group">
-  <label for="secondname">Second Name</label>
-  <input
-    type="text"
-    class="form-control"
-    name="secondname"
-    [(ngModel)]="form.secondname"
-    required
-    #secondname="ngModel"
-  />
-  <div
-    class="alert alert-danger"
-    role="alert"
-    *ngIf="secondname.errors && f.submitted"
-  >
-    Second Name is required!
-  </div>
-</div>
- <div class="form-group">
-   <label for="lastname">Last Name</label>
-   <input
-     type="text"
-     class="form-control"
-     name="secondname"
-     [(ngModel)]="form.lastname"
-     required
-     #lastname="ngModel"
-   />
-   <div
-     class="alert alert-danger"
-     role="alert"
-     *ngIf="lastname.errors && f.submitted"
-   >
-     Last Name is required!
-   </div>
- </div>
-<div class="form-group">
-  <button class="btn btn-primary btn-block">
-    Submit
-  </button>
-</div>
-</form>
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="tenants.name"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="secondname">Second name</label>
+        <input
+          class="form-control"
+          id="secondname"
+          required
+          [(ngModel)]="tenants.secondname"
+          name="description"
+        />
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last name</label>
+        <input
+          class="form-control"
+          id="lastname"
+          required
+          [(ngModel)]="tenants.lastname"
+          name="description"
+        />
+      </div>
+      <button (click)="saveTenant()" class="btn btn-success">Submit</button>
+    </div>
+    <div *ngIf="submitted">
+      <h4>Tutorial was submitted successfully!</h4>
+    </div>
   </div>
 </div>
 

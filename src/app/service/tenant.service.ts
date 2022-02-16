@@ -20,8 +20,8 @@ export class TenantService {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
-  create(name: any,secondname:any,lastname:any): Observable<any> {
-    return this.http.post(baseUrl, {name,secondname,lastname});
+  create(data:any): Observable<any> {
+    return this.http.post(baseUrl, data);
   }
 
   update(id: any, data: any): Observable<any> {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Tenant} from "../models/tenant.model";
 import {TenantService} from "../service/tenant.service";
-import {Router} from "@angular/router";
+import {TokenStorageService} from "../_services/token-storage.service";
 
 @Component({
   selector: 'app-userinfo',
@@ -15,24 +15,37 @@ export class UserinfoComponent implements OnInit {
     secondname: null,
     lastname:null
   };
-  tenants?: Tenant[];
+  tenants: Tenant={
+    name:'',
+    secondname:'',
+    lastname:''
+  };
+  submitted = false;
   isLoggedIn = false;
 
 
-  constructor(private tenantService: TenantService,private router:Router) { }
+  constructor(private tenantService: TenantService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit():void {
-    const { name, secondname, lastname } = this.form;
-    this.tenantService.create(name, secondname, lastname).subscribe(
-    data => {
-      console.log(data);
-    }
-  );
-
+  saveTenant():void {
+    const data={
+      name:this.tenants.name,
+      secondname:this.tenants.secondname,
+      lastname:this.tenants.lastname,
+    };
+    this.tenantService.create(data)
+      .subscribe(
+        response=>{
+          console.log(response);
+          this.submitted=true;
+        },
+        error => {
+          console.log(error);
+        });
   }
+
 
 
 }
