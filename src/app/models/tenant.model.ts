@@ -1,7 +1,7 @@
 export class Tenant
 {
   id ? : any;
-  name ? : string;
-  secondname ? : string;
-  lastname ? : string;
+  name ? : any;
+  secondname ? : any;
+  lastname ? : any;
 }

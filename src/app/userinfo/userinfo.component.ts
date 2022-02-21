@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Tenant} from "../models/tenant.model";
 import {TenantService} from "../service/tenant.service";
 import {TokenStorageService} from "../_services/token-storage.service";
+import {UserService} from "../service/user.service";
+import {User} from "../models/user.model";
+import {Observable} from "rxjs";
+;
 
 @Component({
   selector: 'app-userinfo',
@@ -10,40 +14,39 @@ import {TokenStorageService} from "../_services/token-storage.service";
 })
 export class UserinfoComponent implements OnInit {
 
-  form: any = {
-    name: null,
-    secondname: null,
-    lastname:null
-  };
-  tenants: Tenant={
+  public tenants: Tenant={
     name:'',
     secondname:'',
     lastname:''
   };
+
   submitted = false;
-  isLoggedIn = false;
+  public user: User={
+    username:'',
+    password:''
+  };
 
 
-  constructor(private tenantService: TenantService) { }
+  constructor(private tenantService: TenantService,private token: TokenStorageService,private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
-  saveTenant():void {
-    const data={
-      name:this.tenants.name,
-      secondname:this.tenants.secondname,
-      lastname:this.tenants.lastname,
+  saveTenant(): void {
+    const data = {
+      tenantName: this.tenants.name,
+      tenantSecondName: this.tenants.secondname,
+      tenantLastName: this.tenants.lastname,
     };
+  console.log(data);
     this.tenantService.create(data)
-      .subscribe(
-        response=>{
-          console.log(response);
-          this.submitted=true;
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.submitted = true;
         },
-        error => {
-          console.log(error);
-        });
+        error: (e) => console.error(e)
+      });
   }
 
 
