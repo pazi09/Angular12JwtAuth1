@@ -3,8 +3,8 @@ import {Tenant} from "../models/tenant.model";
 import {TenantService} from "../service/tenant.service";
 import {TokenStorageService} from "../_services/token-storage.service";
 import {UserService} from "../service/user.service";
-import {User} from "../models/user.model";
-import {Observable} from "rxjs";
+import {Flat} from "../models/flat.model";
+import {FlatService} from "../service/flat.service";
 ;
 
 @Component({
@@ -19,15 +19,16 @@ export class UserinfoComponent implements OnInit {
     secondname:'',
     lastname:''
   };
-
+  public flats:Flat={
+    flatnumber:'',
+    square:'',
+    rooms:'',
+  }
+  id:string=this.token.getUser().id
   submitted = false;
-  public user: User={
-    username:'',
-    password:''
-  };
 
 
-  constructor(private tenantService: TenantService,private token: TokenStorageService,private userService: UserService) { }
+  constructor(private tenantService: TenantService,private token: TokenStorageService,private flatService: FlatService) { }
 
   ngOnInit(): void {
   }
@@ -37,9 +38,27 @@ export class UserinfoComponent implements OnInit {
       tenantName: this.tenants.name,
       tenantSecondName: this.tenants.secondname,
       tenantLastName: this.tenants.lastname,
+      user_id:this.id
     };
   console.log(data);
     this.tenantService.create(data)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.submitted = true;
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  saveFlat():void {
+    const data1={
+      flatNumber:this.flats.flatnumber,
+      square: this.flats.square,
+      rooms:this.flats.rooms,
+    };
+    console.log(data1);
+    this.flatService.create(data1)
       .subscribe({
         next: (res) => {
           console.log(res);

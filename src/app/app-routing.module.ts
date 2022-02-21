@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'users' , component:UserlistComponent},
   { path: 'chat' , component:ChatComponent},
   { path: 'map' , component:MapComponent},
-  { path: 'userinfo' , component:UserinfoComponent},
+  { path: 'profile/userinfo' , component:UserinfoComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 
 ];

@@ -34,10 +34,43 @@
           name="lastname"
         />
       </div>
-      <button (click)="saveTenant()" class="btn btn-success">Submit</button>
+      <button (click)="saveTenant()" class="btn btn-success">Continue</button>
     </div>
     <div *ngIf="submitted">
-      <h4>Tutorial was submitted successfully!</h4>
+      <div class="form-group">
+        <label for="flatnumber">Flat Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="flatnumber"
+          required
+          [(ngModel)]="flats.flatnumber"
+          name="flatnumber"
+        />
+      </div>
+      <div class="form-group">
+        <label for="square">Square</label>
+        <input
+          type="text"
+          class="form-control"
+          id="square"
+          required
+          [(ngModel)]="flats.square"
+          name="square"
+        />
+      </div>
+      <div class="form-group">
+        <label for="rooms">Rooms</label>
+        <input
+          type="text"
+          class="form-control"
+          id="rooms"
+          required
+          [(ngModel)]="flats.rooms"
+          name="rooms"
+        />
+      </div>
+      <button (click)="saveFlat()" class="btn btn-success">Continue</button>
     </div>
   </div>
 </div>
