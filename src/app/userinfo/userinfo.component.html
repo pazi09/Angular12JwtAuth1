@@ -1,5 +1,4 @@
-<div>
-  <div class="submit-form">
+<div class="submit-form">
     <div *ngIf="!submitted">
       <div class="form-group">
         <label for="name">Name</label>
@@ -38,6 +37,16 @@
     </div>
     <div *ngIf="submitted">
       <div class="form-group">
+        <label for="adress">House address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="adress"
+          required
+          [(ngModel)]="house.adress"
+          name="adress"
+        />
+      <div class="form-group">
         <label for="flatnumber">Flat Number</label>
         <input
           type="text"
@@ -70,7 +79,7 @@
           name="rooms"
         />
       </div>
-      <button (click)="saveFlat()" class="btn btn-success">Continue</button>
+      <button (click)="saveHouseInfo()" class="btn btn-success">Continue</button>
     </div>
   </div>
 </div>

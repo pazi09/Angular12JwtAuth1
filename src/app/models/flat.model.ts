@@ -4,4 +4,5 @@ export class Flat
   flatnumber?:any;
   square ? : any;
   rooms ? : any;
+  house_id?: any;
 }
