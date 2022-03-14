@@ -35,7 +35,23 @@
       </div>
       <button (click)="saveTenant()" class="btn btn-success">Continue</button>
     </div>
-    <div *ngIf="submitted">
+
+    <div *ngIf="submitted3">
+     <div class="form-group">
+        <label for="city">City</label>
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          required
+          [(ngModel)]="city.city"
+          name="city"
+         />
+      </div>
+      <button (click)="saveCity()" class="btn btn-success">Continue</button>
+    </div>
+
+    <div *ngIf="submitted1">
       <div class="form-group">
         <label for="adress">House address</label>
         <input
@@ -46,6 +62,11 @@
           [(ngModel)]="house.adress"
           name="adress"
         />
+      </div>
+      <button (click)="saveHouse()" class="btn btn-success">Continue</button>
+    </div>
+
+    <div *ngIf="submitted2">
       <div class="form-group">
         <label for="flatnumber">Flat Number</label>
         <input
@@ -57,31 +78,10 @@
           name="flatnumber"
         />
       </div>
-      <div class="form-group">
-        <label for="square">Square</label>
-        <input
-          type="text"
-          class="form-control"
-          id="square"
-          required
-          [(ngModel)]="flats.square"
-          name="square"
-        />
-      </div>
-      <div class="form-group">
-        <label for="rooms">Rooms</label>
-        <input
-          type="text"
-          class="form-control"
-          id="rooms"
-          required
-          [(ngModel)]="flats.rooms"
-          name="rooms"
-        />
-      </div>
-      <button (click)="saveHouseInfo()" class="btn btn-success">Continue</button>
+      <a href="/profile" (click)="saveFlat()" class="btn btn-success" role="button" >Finish</a>
     </div>
-  </div>
+
 </div>
+
 
 

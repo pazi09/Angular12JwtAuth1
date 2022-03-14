@@ -1,4 +1,5 @@
-<div id="app">
+<header>
+<div class="container-xxl" id="app">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
     <a href="#" class="navbar-brand">Community</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
@@ -23,9 +24,6 @@
       <li class="nav-item">
         <a href="/map" class="nav-link" *ngIf="isLoggedIn" routerLink="map">Map</a>
       </li>
-
-
-
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
@@ -51,3 +49,5 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+</header>
+

@@ -12,10 +12,6 @@ export class CityService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<City[]> {
-    return this.http.get<City[]>(baseUrl);
-  }
-
   get(id: any): Observable<City> {
     return this.http.get(`${baseUrl}/${id}`);
   }
@@ -30,5 +26,9 @@ export class CityService {
 
   delete(id: any): Observable<any> {
     return this.http.delete(`${baseUrl}/delete/${id}`);
+  }
+
+  getByUser(): Observable<City> {
+    return this.http.get(baseUrl);
   }
 }

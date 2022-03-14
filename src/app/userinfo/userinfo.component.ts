@@ -7,6 +7,8 @@ import {Flat} from "../models/flat.model";
 import {FlatService} from "../service/flat.service";
 import {House} from "../models/house.model";
 import {HouseService} from "../service/house.service";
+import {City} from "../models/city.model";
+import {CityService} from "../service/city.service";
 ;
 
 @Component({
@@ -22,20 +24,24 @@ export class UserinfoComponent implements OnInit {
     lastname:''
   };
   public flats:Flat={
-    flatnumber:'',
-    square:'',
-    rooms:'',
+    flatnumber:''
   }
   public house:House={
     id:'',
     adress:''
   };
-  id:string=this.token.getUser().id
+  public city:City={
+    id:'',
+    city:''
+  };
   house_id:any;
   submitted = false;
+  submitted1 = false;
+  submitted2 = false;
+  submitted3 = false;
 
 
-  constructor(private tenantService: TenantService,private token: TokenStorageService,private flatService: FlatService,private  houseService: HouseService) { }
+  constructor(private tenantService: TenantService,private token: TokenStorageService,private flatService: FlatService,private  houseService: HouseService,private cityService: CityService) { }
 
   ngOnInit(): void {
   }
@@ -45,7 +51,7 @@ export class UserinfoComponent implements OnInit {
       tenantName: this.tenants.name,
       tenantSecondName: this.tenants.secondname,
       tenantLastName: this.tenants.lastname,
-      user_id:this.id
+      // user_id:this.id
     };
   console.log(data);
     this.tenantService.create(data)
@@ -53,9 +59,26 @@ export class UserinfoComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.submitted = true;
+          this.submitted3 = true;
         },
         error: (e) => console.error(e)
       });
+  }
+
+  saveCity():void{
+    const data3={
+      city:this.city.city
+    }
+    console.log(data3);
+    this.cityService.create(data3)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.submitted3 = false;
+          this.submitted1 = true;
+        },
+        error: (e) => console.error(e)
+      })
   }
 
   saveHouse():void{
@@ -63,41 +86,36 @@ export class UserinfoComponent implements OnInit {
       address:this.house.adress
     }
     console.log(data2);
+
     this.houseService.create(data2)
       .subscribe({
         next: (res) => {
           console.log(res);
           this.house = res;
-          console.log(this.house);
-          this.submitted = true;
+          this.submitted1 = false;
+          this.submitted2 = true;
         },
         error: (e) => console.error(e)
       });
+
+  }
+
+  saveFlat():void {
     const data1={
-      flatNumber:this.flats.flatnumber,
-      square: this.flats.square,
-      rooms:this.flats.rooms,
-      house_id:this.house.id
+      flatNumber:this.flats.flatnumber
     };
-    console.log(data1);
     this.flatService.create(data1)
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.submitted = true;
         },
         error: (e) => console.error(e)
       });
-  }
 
-  saveFlat():void {
-    console.log(this.house);
 
   }
 
-  saveHouseInfo(): void{
-    this.saveHouse()
-  }
+
 
 
 

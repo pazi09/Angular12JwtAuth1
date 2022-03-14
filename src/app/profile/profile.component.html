@@ -4,18 +4,25 @@
         <strong>{{ currentUser.username }}</strong> Profile
       </h3>
     </header>
-    <strong>Roles:</strong>
+    <a href="/userinfo" class="btn btn-success" role="button" *ngIf="isLoggedIn && !info"  routerLink="userinfo">Add User Info</a>
+  <div>
+  <strong>User info:</strong>
     <ul>
       <li *ngFor="let role of currentUser.roles">
         {{ role }}
       </li>
-    </ul>
-    <ul>
-      <li>
-        <a href="/userinfo" class="nav-link" *ngIf="isLoggedIn" routerLink="userinfo">User Info</a>
+      <li *ngIf="info">
+        {{city.city}}
+      </li>
+      <li *ngIf="info">
+        {{house.adress}}
+      </li>
+      <li *ngIf="info">
+        {{flats.flatnumber}}
       </li>
     </ul>
   </div>
+</div>
 
   <ng-template #loggedOut>
     Please login.

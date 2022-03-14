@@ -4,7 +4,7 @@
       <div class="card">
         <ul class="list-group list-group-flush">
           <li class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
-            <strong>{{ currentUser.username }}: </strong>
+            <strong>{{ chatMessage.user }}: </strong>
             <span>{{chatMessage.message}}</span>
           </li>
         </ul>
