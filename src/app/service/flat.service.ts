@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Flat} from "../models/flat.model";
+import {House} from "../models/house.model";
 
 const baseUrl = 'http://localhost:8080/flats';
 
@@ -11,10 +12,6 @@ const baseUrl = 'http://localhost:8080/flats';
 export class FlatService {
 
   constructor(private http: HttpClient) {}
-
-  getAll(): Observable<Flat[]> {
-    return this.http.get<Flat[]>(baseUrl);
-  }
 
   get(id: any): Observable<Flat> {
     return this.http.get(`${baseUrl}/${id}`);
@@ -30,5 +27,9 @@ export class FlatService {
 
   delete(id: any): Observable<any> {
     return this.http.delete(`${baseUrl}/delete/${id}`);
+  }
+
+  getByUser(): Observable<House> {
+    return this.http.get(baseUrl);
   }
 }

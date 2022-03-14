@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {House} from "../models/house.model";
+import {City} from "../models/city.model";
 
 const baseUrl = 'http://localhost:8080/houses';
 
@@ -11,10 +12,6 @@ const baseUrl = 'http://localhost:8080/houses';
 export class HouseService {
 
   constructor(private http: HttpClient) {}
-
-  getAll(): Observable<House[]> {
-    return this.http.get<House[]>(baseUrl);
-  }
 
   get(id: any): Observable<House> {
     return this.http.get(`${baseUrl}/${id}`);
@@ -30,5 +27,9 @@ export class HouseService {
 
   delete(id: any): Observable<any> {
     return this.http.delete(`${baseUrl}/delete/${id}`);
+  }
+
+  getByUser(): Observable<House> {
+    return this.http.get(baseUrl);
   }
 }

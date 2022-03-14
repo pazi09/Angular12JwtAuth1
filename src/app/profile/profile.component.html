@@ -11,14 +11,25 @@
       <li *ngFor="let role of currentUser.roles">
         {{ role }}
       </li>
-      <li *ngIf="info">
+    </ul>
+    <ul *ngIf="info">
+      <li >
         {{city.city}}
       </li>
-      <li *ngIf="info">
+      <li >
         {{house.adress}}
       </li>
-      <li *ngIf="info">
+      <li >
         {{flats.flatnumber}}
+      </li>
+      <li >
+        {{tenants.secondname}}
+      </li>
+      <li >
+        {{tenants.name}}
+      </li>
+      <li >
+        {{tenants.lastname}}
       </li>
     </ul>
   </div>
